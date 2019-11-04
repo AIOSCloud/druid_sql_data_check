@@ -1,0 +1,11 @@
+---
+Trunk:
+  dec: "中继指标"
+  parameters:
+    url:  http://%s:18082/druid/v2/sql
+    header:
+      content-Type: application/json
+    json:
+      query: SELECT TIME_FLOOR(__time,'PT1H'),SUM(trunkEnterNum) as trunkEnterNum FROM "%s" WHERE __time>='%s' and __time<='%s' GROUP BY TIME_FLOOR(__time,'PT1H')
+      context:
+        sqlTimeZone: Asia/Shanghai

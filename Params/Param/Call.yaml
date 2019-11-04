@@ -1,0 +1,11 @@
+---
+Call:
+  dec: "坐席通话Id的指标"
+  parameters:
+    url:  http://%s:18082/druid/v2/sql
+    header:
+      content-Type: application/json
+    json:
+      query: SELECT  TIME_FORMAT(TIME_FLOOR(__time,'P1D'),'yyyy-MM-dd') as dataDate,vccId,(SUM(callNumIB)/1000) as callNumIB,(SUM(callAnsweredNumIB)/1000)as callAnsweredNumIB,(SUM(callTimeTalkAcdIB)/1000) as callTimeTalkAcdIB,(SUM(callNumOB)/1000) as callNumOB,(SUM(callAnsweredNumOB)/1000) as callAnsweredNumOB,(SUM(callTimeTalkOB)/1000) as callTimeTalkOB FROM "%s" WHERE __time>='%s' and __time<='%s' GROUP BY TIME_FLOOR(__time,'P1D'),vccId
+      context:
+        sqlTimeZone: Asia/Shanghai

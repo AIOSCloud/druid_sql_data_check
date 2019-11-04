@@ -1,0 +1,11 @@
+---
+Agent:
+  dec: "坐席ID相关指标查询"
+  parameters:
+    url:  http://%s:18082/druid/v2/sql
+    header:
+      content-Type: application/json
+    json:
+      query: SELECT TIME_FORMAT(TIME_FLOOR(__time,'P1D'),'yyyy-MM-dd') as dataDate,vccId,(SUM(loginTime)/1000) as loginTime FROM "%s" WHERE __time>='%s' and __time<'%s' GROUP BY TIME_FLOOR(__time,'P1D'),vccId
+      context:
+        sqlTimeZone: Asia/Shanghai

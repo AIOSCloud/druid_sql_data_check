@@ -1,0 +1,11 @@
+---
+Queue:
+  dec: "队列指标"
+  parameters:
+    url:  http://%s:18082/druid/v2/sql
+    header:
+      content-Type: application/json
+    json:
+      query: SELECT TIME_FORMAT(TIME_FLOOR(__time,'P1D'),'yyyy-MM-dd') as dataDate,vccId,SUM(queueEnterNum),SUM(queueAnboundNum),SUM(queueAnsweredNumFirst),SUM(queueEnterNumUseful),SUM(queue5sAnsweredNum),SUM(queue10sAnsweredNum),SUM(queue20sAnsweredNum),SUM(queue25sAnsweredNum),SUM(queueWaitTime),SUM(queueWaitTimeAbandoned),SUM(queueWaitTimeAbandonedC),SUM(queueWaitTimeAnswered),SUM(queueWaitTimeUseful) FROM "%s" WHERE __time>='%s' and __time<='%s' GROUP BY TIME_FLOOR(__time,'P1D'),vccId;
+      context:
+        sqlTimeZone: Asia/Shanghai
