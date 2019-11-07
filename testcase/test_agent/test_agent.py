@@ -20,7 +20,7 @@ def index(request):
 def test_agent(index):
     line_online = online_data.loc[index]
     line_offline = offline_data[(offline_data["dataDate"] == line_online["dataDate"]) & (
-            offline_data["vccId"] == line_online["vccId"]) & (offline_data["agId"] == line_online["agId"])]
+            offline_data["vccId"] == line_online["vccId"])]
     if line_offline.index > 0:
         line_offline = line_offline.loc[line_offline.index[0]]
         print("测试:\n" + str(line_offline))
