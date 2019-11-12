@@ -6,10 +6,10 @@ from Params.params import TrunkBasic
 
 
 def package_trunk(host, db, start_time, end_time):
-    call = TrunkBasic()
-    url = call.url % host
-    header = call.header
-    data = call.data
+    trunk = TrunkBasic()
+    url = trunk.url % host
+    header = trunk.header
+    data = trunk.data
     data['query'] = data['query'] % (db, start_time, end_time)
     print(data['query'])
     return url, header, data

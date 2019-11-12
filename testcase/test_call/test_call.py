@@ -28,9 +28,9 @@ def test_call(index):
         print("测试:\n" + str(line_offline))
         print("线上:\n" + str(line_online))
         assert (line_offline.values == line_online.values).all()
-    else:
-        print("测试:\n" + str(line_offline))
-        print("线上:\n" + str(line_online))
-        line_offline = line_offline.loc[line_offline.index[0]]
-        assert (line_offline.values == line_online.values).all()
-    pass
+    # else:
+    #    print("测试:\n" + str(line_offline))
+    #    print("线上:\n" + str(line_online))
+    #    line_offline = line_offline.loc[line_offline.index[0]]
+    #    assert (line_offline.values == line_online.values).all()
+    # pass

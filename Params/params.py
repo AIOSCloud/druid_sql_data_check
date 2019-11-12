@@ -47,7 +47,7 @@ class TrunkBasic:
 class QueueBasic:
     def __init__(self):
         log.info('解析yaml,Path:' + path_dir + '/params/Yaml/Agent.yaml')
-        params = get_parameter('Trunk')
+        params = get_parameter('Queue')
         self.url = params['url']
         self.header = params['header']
         self.data = params['json']

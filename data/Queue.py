@@ -5,10 +5,10 @@
 from Params.params import QueueBasic
 
 
-def package_agent(host, db, start_time, end_time):
-    call = QueueBasic()
-    url = call.url % host
-    header = call.header
-    data = call.data
+def package_queue(host, db, start_time, end_time):
+    queue = QueueBasic()
+    url = queue.url % host
+    header = queue.header
+    data = queue.data
     data['query'] = data['query'] % (db, start_time, end_time)
     return url, header, data

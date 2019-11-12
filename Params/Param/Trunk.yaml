@@ -6,6 +6,6 @@ Trunk:
     header:
       content-Type: application/json
     json:
-      query: SELECT TIME_FLOOR(__time,'PT1H'),SUM(trunkEnterNum) as trunkEnterNum FROM "%s" WHERE __time>='%s' and __time<='%s' GROUP BY TIME_FLOOR(__time,'PT1H')
+      query: SELECT TIME_FORMAT(TIME_FLOOR(__time,'P1D'),'yyyy-MM-dd') as dataDate,vccId,SUM(trunkEnterNum) as trunkEnterNum,SUM(trunkManualRequestNum) as trunkManualRequestNum,SUM(trunkManualAnsweredNum) as trunkManualAnsweredNum,SUM(callTime) as callTime,Sum(talkTime) as talkTime,SUM(trunk20sAnsweredNum) as trunk20sAnsweredNum FROM "%s" WHERE __time>='%s' and __time<='%s' GROUP BY TIME_FLOOR(__time,'P1D'),vccId
       context:
         sqlTimeZone: Asia/Shanghai
